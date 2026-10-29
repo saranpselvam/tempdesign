@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pennant Education · Live 1:1 online classes for Grades 1–12 and IT career training</title>
+<meta name="description" content="Private, live online lessons for Grades 1–12 and instructor-led certification training in IT, cybersecurity, networking and automation. Based in Cranbury, New Jersey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1F1F5C;        /* logo wordmark */
+  --navy-deep:#14143F;
+  --blue:#0A0AF0;        /* logo square */
+  --blue-hover:#0000C8;
+  --sky:#1EB2FF;         /* logo overlap */
+  --cyan:#5CF2FF;        /* logo pennant */
+  --ice:#EEF7FF;
+  --ice-2:#DDF0FF;
+  --sun:#FFB020;         /* warm accent, used sparingly */
+  --ink:#14143A;
+  --muted:#55597A;
+  --line:#E2E6F3;
+  --white:#FFFFFF;
+  --radius:18px;
+  --wrap:1240px;
+  --pad:clamp(20px,4vw,48px);
+  --head:'Poppins',system-ui,sans-serif;
+  --body:'Nunito Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--blue)}
+h1,h2,h3,h4{font-family:var(--head);color:var(--navy);margin:0;line-height:1.12;letter-spacing:-.015em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{content:"";width:10px;height:10px;background:var(--cyan);clip-path:polygon(100% 0,0 22%,72% 100%)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:12px;font-family:var(--head);font-weight:600;font-size:15px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-hover)}
+.btn-sun{background:var(--sun);color:var(--navy)}.btn-sun:hover{background:#FFC24D}
+.btn-line{border-color:var(--navy);color:var(--navy);background:transparent}.btn-line:hover{background:var(--navy);color:#fff}
+.btn-ghost-light{border-color:rgba(255,255,255,.5);color:#fff}.btn-ghost-light:hover{background:#fff;color:var(--navy)}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+
+/* ---------- Top bar ---------- */
+.topbar{background:var(--navy);color:#C9CCF0;font-size:14px}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;padding-block:9px}
+.topbar a{color:#fff;text-decoration:none}
+.topbar a:hover{text-decoration:underline}
+.topbar .contact{display:flex;flex-wrap:wrap;gap:6px 20px}
+.topbar .note a{color:var(--cyan);font-weight:700}
+
+/* ---------- Header + mega menu ---------- */
+.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.header-row{display:flex;align-items:center;gap:24px;min-height:78px}
+.logo img{height:46px;width:auto}
+.main-nav{display:flex;align-items:stretch;align-self:stretch;gap:2px;margin-left:12px}
+.nav-item{display:flex;align-items:stretch}
+.nav-trigger,.nav-link{display:flex;align-items:center;gap:6px;padding:0 14px;font-family:var(--head);font-weight:500;font-size:15px;color:var(--navy);background:none;border:0;border-bottom:3px solid transparent;cursor:pointer;text-decoration:none}
+.nav-trigger svg{transition:transform .2s}
+.nav-item.open .nav-trigger{border-bottom-color:var(--blue);color:var(--blue)}
+.nav-item.open .nav-trigger svg{transform:rotate(180deg)}
+.nav-trigger:hover,.nav-link:hover{color:var(--blue)}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
+.call-link{display:flex;flex-direction:column;line-height:1.2;text-decoration:none;color:var(--navy);font-size:13px}
+.call-link strong{font-family:var(--head);font-size:15px}
+.burger{display:none;width:48px;height:48px;border-radius:12px;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer}
+
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(20,20,63,.25);display:none}
+.nav-item.open .mega{display:block}
+.mega-grid{display:grid;grid-template-columns:260px 1fr 300px;min-height:340px}
+.mega-side{background:var(--ice);padding:24px 0;display:flex;flex-direction:column}
+.mega-side button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:13px 28px;font-family:var(--head);font-weight:500;font-size:15px;color:var(--navy)}
+.mega-side button[aria-selected="true"]{background:#fff;color:var(--blue);box-shadow:inset 4px 0 0 var(--blue)}
+.mega-side button:focus-visible{outline:3px solid var(--sky);outline-offset:-3px}
+.mega-panel{padding:28px 36px;display:none}
+.mega-panel.active{display:block}
+.mega-panel h4{font-size:20px;margin-bottom:6px}
+.mega-panel p{margin:0 0 18px;color:var(--muted);font-size:15px}
+.mega-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 28px}
+.mega-links a{display:flex;align-items:center;gap:10px;padding:8px 0;color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.mega-links a::before{content:"";flex:0 0 8px;height:8px;background:var(--sky);transform:rotate(45deg);border-radius:2px}
+.mega-links a:hover{color:var(--blue)}
+.mega-feature{margin:24px;border-radius:var(--radius);overflow:hidden;background:var(--navy);color:#fff;display:flex;flex-direction:column}
+.mega-feature img{height:150px;width:100%;object-fit:cover;object-position:top}
+.mega-feature .in{padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.mega-feature strong{font-family:var(--head);font-size:17px}
+.mega-feature span{font-size:14px;color:#C9CCF0}
+.mega-feature a{color:var(--cyan);font-weight:700;font-size:14px;text-decoration:none;margin-top:4px}
+.mega-feature.fund{background:var(--blue);justify-content:space-between;padding:24px}
+.mega-feature.fund .big{font-family:var(--head);font-weight:700;font-size:24px;line-height:1.15}
+
+/* Mobile drawer */
+.drawer{position:fixed;inset:0;z-index:100;display:none}
+.drawer.open{display:block}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(20,20,63,.5)}
+.drawer-panel{position:absolute;right:0;top:0;bottom:0;width:min(420px,100%);background:#fff;display:flex;flex-direction:column}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)}
+.drawer-head img{height:38px}
+.drawer-body{flex:1;overflow-y:auto;padding:4px 20px}
+.acc-btn{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:58px;border-bottom:1px solid var(--line);font-family:var(--head);font-weight:600;font-size:18px;color:var(--navy)}
+.acc-btn:focus-visible{outline:3px solid var(--sky)}
+.acc-btn .pm{font-size:24px;font-weight:500;color:var(--blue)}
+.acc-panel{display:none;padding:10px 0 18px;border-bottom:1px solid var(--line)}
+.acc-panel.open{display:block}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:10px;background:var(--ice);color:var(--navy);text-decoration:none;font-weight:600;font-size:15px}
+.drawer-link{display:flex;align-items:center;min-height:58px;border-bottom:1px solid var(--line);font-family:var(--head);font-weight:600;font-size:18px;color:var(--navy);text-decoration:none}
+.drawer-foot{padding:16px 20px 22px;border-top:1px solid var(--line);display:flex;gap:10px}
+.drawer-foot .btn{flex:1}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;background:#fff}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:clamp(40px,6vw,80px) clamp(56px,7vw,96px)}
+.hero h1{font-size:clamp(38px,5.2vw,68px);font-weight:700;letter-spacing:-.025em;margin:18px 0 20px}
+.hero h1 .mark{color:var(--blue);position:relative;white-space:nowrap}
+.hero h1 .mark::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:var(--cyan);z-index:-1;border-radius:4px}
+.hero .lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:540px;margin:0 0 30px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero-proof{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+.proof{display:flex;flex-direction:column}
+.proof b{font-family:var(--head);font-size:22px;color:var(--navy)}
+.proof span{font-size:14px;color:var(--muted)}
+
+/* Logo-shape composition: the logo becomes the frame */
+.shape-stage{position:relative;aspect-ratio:1/1;max-width:580px;justify-self:end;width:100%}
+.shape-photo{position:absolute;inset:0;clip-path:polygon(56% 12.5%,88.5% 43.8%,34.4% 98.4%,1.6% 64.8%);background:var(--ice-2)}
+.shape-photo video,.shape-photo img{width:100%;height:100%;object-fit:cover}
+.shape-tri{position:absolute;inset:0;clip-path:polygon(97.7% 1.6%,13.3% 24.2%,73.4% 85.9%);background:var(--cyan);mix-blend-mode:multiply;opacity:.88;pointer-events:none}
+.shape-dot{position:absolute;width:22%;aspect-ratio:1/1;right:2%;bottom:6%;background:var(--sun);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.video-toggle{position:absolute;left:6%;bottom:3%;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:0;background:var(--navy);color:#fff;font-family:var(--head);font-weight:500;font-size:13px;cursor:pointer}
+.hero-badge{position:absolute;right:0;top:56%;z-index:2;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;max-width:230px;box-shadow:0 18px 30px -18px rgba(20,20,63,.35)}
+.hero-badge b{display:block;font-family:var(--head);color:var(--navy);font-size:15px}
+.hero-badge span{font-size:13px;color:var(--muted)}
+
+/* ---------- Split paths ---------- */
+.paths{display:grid;grid-template-columns:1fr 1fr}
+.path{position:relative;padding:clamp(40px,5vw,72px) var(--pad);color:#fff;display:flex;gap:28px;align-items:flex-end;min-height:420px;overflow:hidden}
+.path.kids{background:var(--navy)}
+.path.adults{background:var(--blue)}
+.path .txt{position:relative;z-index:1;max-width:420px;display:flex;flex-direction:column;gap:14px}
+.path h2{color:#fff;font-size:clamp(28px,3vw,40px)}
+.path p{margin:0;color:#D6D8F5}
+.path ul{list-style:none;padding:0;margin:4px 0 8px;display:flex;flex-wrap:wrap;gap:8px}
+.path li{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.12)}
+.path .go{color:var(--cyan);font-family:var(--head);font-weight:600;text-decoration:none;font-size:16px}
+.path .go:hover{text-decoration:underline}
+.path .pic{position:absolute;right:-6%;top:-10%;width:52%;aspect-ratio:1/1;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);opacity:.95}
+.path .pic img{width:100%;height:100%;object-fit:cover}
+.path .pic::after{content:"";position:absolute;inset:0;background:var(--sky);mix-blend-mode:multiply;opacity:.35}
+.path.adults .pic::after{background:var(--cyan)}
+
+/* ---------- Partners ---------- */
+.partners{border-bottom:1px solid var(--line)}
+.partners .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 36px;padding-block:26px}
+.partners small{color:var(--muted);font-size:14px}
+.partners span{font-family:var(--head);font-weight:600;font-size:19px;color:#6B6F92}
+
+/* ---------- Sections ---------- */
+.section{padding-block:clamp(64px,8vw,112px)}
+.section-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px;margin-bottom:40px}
+.section-head h2{font-size:clamp(30px,3.6vw,48px);margin-top:12px;max-width:680px}
+.section-head p{margin:0;max-width:420px;color:var(--muted)}
+
+/* Tabs */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:28px;scrollbar-width:none}
+.tab{flex:0 0 auto;min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-family:var(--head);font-weight:500;font-size:15px;color:var(--navy);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.tab-panel{display:none;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch}
+.tab-panel.active{display:grid}
+.tab-card{background:var(--ice);border-radius:24px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px}
+.tab-card h3{font-size:clamp(24px,2.4vw,32px)}
+.tab-card p{margin:0;color:var(--muted)}
+.tab-card ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.tab-card li{display:flex;gap:12px;align-items:flex-start}
+.tab-card li::before{content:"";flex:0 0 10px;height:10px;margin-top:8px;background:var(--blue);transform:rotate(45deg);border-radius:2px}
+.tab-card .btn{align-self:flex-start;margin-top:auto}
+.tab-media{border-radius:24px;overflow:hidden;position:relative;min-height:340px;background:var(--ice-2)}
+.tab-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tab-media .tag{position:absolute;left:18px;bottom:18px;background:#fff;color:var(--navy);font-family:var(--head);font-weight:600;font-size:14px;padding:8px 14px;border-radius:10px}
+
+/* Teachers */
+.teachers{background:var(--ice)}
+.t-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.teacher{background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.teacher .ph{aspect-ratio:4/3.4;background:var(--ice-2);position:relative;overflow:hidden}
+.teacher .ph img{width:100%;height:100%;object-fit:cover;object-position:top}
+.teacher .ph::before{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;background:var(--cyan);clip-path:polygon(100% 0,0 22%,72% 100%);mix-blend-mode:multiply;z-index:1}
+.teacher .in{padding:22px 24px 26px;display:flex;flex-direction:column;gap:8px}
+.teacher .role{font-family:var(--head);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.teacher h3{font-size:22px}
+.teacher p{margin:0;font-size:15px;color:var(--muted)}
+
+/* Pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.plan{border:1.5px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:6px;background:#fff;position:relative}
+.plan.pop{border:2px solid var(--blue)}
+.plan .flag{position:absolute;top:-14px;left:24px;background:var(--blue);color:#fff;font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.08em;padding:5px 12px;border-radius:999px}
+.plan .len{font-family:var(--head);font-weight:600;color:var(--navy);font-size:18px}
+.plan .amt{font-family:var(--head);font-weight:700;font-size:44px;color:var(--navy);line-height:1.1;margin-top:8px}
+.plan .per{color:var(--blue);font-weight:700}
+.plan .sub{color:var(--muted);font-size:15px;margin-bottom:16px}
+.plan .btn{margin-top:auto}
+.price-note{margin-top:22px;color:var(--muted);font-size:15px}
+
+/* Career */
+.career{background:var(--navy-deep);color:#D6D8F5}
+.career h2{color:#fff}
+.career .eyebrow{color:var(--cyan)}
+.career-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.career-intro{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+.career-intro h2{font-size:clamp(30px,3.6vw,48px)}
+.career-intro p{margin:0}
+.fund-card{background:var(--blue);border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:10px;color:#fff;position:relative;overflow:hidden}
+.fund-card::after{content:"";position:absolute;right:-24px;bottom:-24px;width:120px;height:120px;background:var(--cyan);clip-path:polygon(100% 0,0 22%,72% 100%);opacity:.9}
+.fund-card b{font-family:var(--head);font-size:22px;line-height:1.2;max-width:300px}
+.fund-card span{max-width:330px;font-size:15px;color:#E2E4FF}
+.fund-card .btn{align-self:flex-start;margin-top:8px;position:relative;z-index:1}
+.tracks{border-top:1px solid #2D2E6E}
+.track{border-bottom:1px solid #2D2E6E}
+.track-btn{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:16px;padding:22px 4px}
+.track-btn:focus-visible{outline:3px solid var(--cyan)}
+.track-btn .ico{width:44px;height:44px;border-radius:12px;background:#24256A;display:grid;place-items:center}
+.track-btn .t{font-family:var(--head);font-weight:600;font-size:21px;color:#fff}
+.track-btn .n{font-size:14px;color:#9EA2D6;display:block;font-family:var(--body);font-weight:400}
+.track-btn .pm{width:36px;height:36px;border-radius:50%;border:1.5px solid #3D3F8A;display:grid;place-items:center;color:var(--cyan);font-size:20px}
+.track-body{display:none;padding:0 4px 24px 72px}
+.track.open .track-body{display:block}
+.track.open .pm{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+.cert-list{display:flex;flex-wrap:wrap;gap:8px}
+.cert{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:10px;background:#24256A;color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+.cert:hover{background:var(--blue)}
+
+/* Review */
+.review-wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;max-width:980px}
+.quote-mark{width:84px;height:84px;background:var(--blue);clip-path:polygon(100% 0,0 22%,72% 100%)}
+.review blockquote{margin:0;font-family:var(--head);font-weight:500;font-size:clamp(22px,2.6vw,32px);line-height:1.35;color:var(--navy)}
+.review .who{margin-top:20px;color:var(--muted)}
+.review .who b{color:var(--navy)}
+.stars{color:var(--sun);letter-spacing:2px;font-size:18px}
+
+/* FAQ */
+.faq{background:var(--ice)}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.faq-list details{background:#fff;border-radius:16px;margin-bottom:12px;padding:0 24px}
+.faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:68px;font-family:var(--head);font-weight:600;font-size:17px;color:var(--navy)}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-size:26px;font-weight:500;color:var(--blue)}
+.faq-list details[open] summary::after{content:"−"}
+.faq-list details p{margin:0 0 22px;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.cta .wrap{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px;padding-block:clamp(56px,7vw,96px)}
+.cta h2{color:#fff;font-size:clamp(32px,4.2vw,56px);max-width:640px}
+.cta p{margin:12px 0 0;color:#E2E4FF;max-width:520px}
+.cta .acts{display:flex;flex-wrap:wrap;gap:12px}
+.cta::before{content:"";position:absolute;right:-80px;top:-120px;width:460px;height:460px;background:var(--cyan);clip-path:polygon(100% 0,0 22%,72% 100%);opacity:.9}
+.cta::after{content:"";position:absolute;right:180px;bottom:-140px;width:260px;height:260px;background:var(--navy);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);opacity:.5}
+
+/* Footer */
+.footer{background:var(--navy);color:#C9CCF0;font-size:15px}
+.footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr) 1.2fr;gap:36px;padding-block:64px 40px}
+.footer img{height:44px;width:auto;margin-bottom:16px}
+.footer h4{color:#fff;font-size:15px;margin-bottom:14px}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.footer a{color:#C9CCF0;text-decoration:none}
+.footer a:hover{color:#fff}
+.footer-bottom{border-top:1px solid #34357A;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-block:22px;font-size:13px;color:#9EA2D6}
+.footer-bottom a{color:#9EA2D6}
+.footer-bottom nav{display:flex;flex-wrap:wrap;gap:20px}
+
+/* Sticky mobile CTA */
+.mobile-cta{display:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .main-nav,.call-link,.header-actions .btn{display:none}
+  .burger{display:inline-flex}
+  .hero-grid{grid-template-columns:1fr}
+  .shape-stage{justify-self:center;max-width:520px}
+  .footer-grid{grid-template-columns:1fr 1fr 1fr}
+  .footer-grid > div:first-child{grid-column:1/-1}
+}
+@media (max-width:860px){
+  .paths{grid-template-columns:1fr}
+  .tab-panel.active{grid-template-columns:1fr}
+  .tab-media{min-height:240px;order:-1}
+  .t-grid,.price-grid{grid-template-columns:1fr}
+  .career-grid,.faq-grid{grid-template-columns:1fr;gap:36px}
+  .career-intro{position:static}
+  .review-wrap{grid-template-columns:1fr;gap:20px}
+  .quote-mark{width:56px;height:56px}
+}
+@media (max-width:640px){
+  body{font-size:16px;padding-bottom:76px}
+  .topbar .note{display:none}
+  .topbar .contact a:not(:first-child){display:none}
+  .hero-badge{display:none}
+  .path{min-height:360px}
+  .path .pic{width:70%;right:-20%;top:-14%;opacity:.55}
+  .track-body{padding-left:4px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .mobile-cta{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:12px 16px}
+  .mobile-cta .btn{flex:1;min-height:52px}
+  .mobile-cta .icon-btn{flex:0 0 52px;padding:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="contact">
+      <a href="tel:+12407477755">Call +1 (240) 747-7755</a>
+      <a href="https://wa.me/16099292070">WhatsApp +1 (609) 929-2070</a>
+      <a href="mailto:info@pennanteducation.com">info@pennanteducation.com</a>
+    </div>
+    <div class="note">New Jersey residents: career training may be funded. <a href="#career">Check eligibility →</a></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="#" aria-label="Pennant Education home">
+      <img src="../img/logo-dark.png" alt="Pennant Education" width="164" height="46">
+    </a>
+
+    <nav class="main-nav" aria-label="Main">
+      <!-- K-12 -->
+      <div class="nav-item">
+        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-k12">K–12 classes
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
+        <div class="mega" id="mega-k12">
+          <div class="wrap" style="padding:0">
+            <div class="mega-grid" data-mega>
+              <div class="mega-side" role="tablist" aria-label="K–12 categories">
+                <button role="tab" aria-selected="true" data-panel="k-core">Core subjects <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="k-sat">SAT prep <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="k-lang">Languages and chess <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="k-code">Coding and tech <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="k-art">Art and design <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="k-work">Workshops and camps <span aria-hidden="true">›</span></button>
+              </div>
+              <div>
+                <div class="mega-panel active" id="k-core" role="tabpanel">
+                  <h4>Core school subjects</h4>
+                  <p>One-on-one support tailored to your child's grade level.</p>
+                  <div class="mega-links"><a href="https://pennanteducation.com/math/">Math</a><a href="https://pennanteducation.com/english-language-arts-ela/">English Language Arts</a><a href="https://pennanteducation.com/science/">Science</a><a href="https://pennanteducation.com/social-studies/">Social Studies</a><a href="https://pennanteducation.com/creative-writing-classes/">Creative and essay writing</a><a href="https://pennanteducation.com/english-as-a-second-language-esl/">ESL</a></div>
+                </div>
+                <div class="mega-panel" id="k-sat" role="tabpanel">
+                  <h4>SAT preparation</h4>
+                  <p>Personalized Math and Reading and Writing prep, built around each student's strengths.</p>
+                  <div class="mega-links"><a href="https://pennanteducation.com/sat-prep-lessons/">SAT Math</a><a href="https://pennanteducation.com/sat-prep-lessons/">SAT Reading and Writing</a></div>
+                </div>
+                <div class="mega-panel" id="k-lang" role="tabpanel">
+                  <h4>Languages and chess</h4>
+                  <p>Native-speaking teachers, from beginner to AP and IB levels.</p>
+                  <div class="mega-links"><a href="https://pennanteducation.com/spanish-classes/">Spanish</a><a href="https://pennanteducation.com/foreign-language/">French</a><a href="https://pennanteducation.com/foreign-language/">Mandarin Chinese</a><a href="https://pennanteducation.com/foreign-language/">Russian</a><a href="https://pennanteducation.com/chess/">Chess</a></div>
+                </div>
+                <div class="mega-panel" id="k-code" role="tabpanel">
+                  <h4>Coding and technology</h4>
+                  <p>From first lines of code to full games and websites.</p>
+                  <div class="mega-links"><a href="https://pennanteducation.com/python/">Python</a><a href="#">Minecraft coding</a><a href="https://pennanteducation.com/game-development-in-unity/">Unity game development</a><a href="https://pennanteducation.com/web-development-full-stack/">Full-stack web development</a><a href="https://pennanteducation.com/prompt-engineering-essentials/">Prompt engineering</a></div>
+                </div>
+                <div class="mega-panel" id="k-art" role="tabpanel">
+                  <h4>Art and design</h4>
+                  <p>Creative and practical skills through real visual projects.</p>
+                  <div class="mega-links"><a href="https://pennanteducation.com/digital-art/">Digital art</a><a href="#">Graphic and web design</a><a href="#">Photo and video editing</a></div>
+                </div>
+                <div class="mega-panel" id="k-work" role="tabpanel">
+                  <h4>Workshops and summer camps</h4>
+                  <p>Short courses for ages 8+ and 13+.</p>
+                  <div class="mega-links"><a href="https://pennanteducation.com/workshop-intro-to-ai/">Intro to AI</a><a href="https://pennanteducation.com/workshop-adventure-with-ai/">Adventure with AI</a><a href="https://pennanteducation.com/workshop-cybersecurity-adv/">Cybersecurity Adventures</a><a href="https://pennanteducation.com/workshop-intro-to-cybersecurity/">Intro to Cybersecurity</a><a href="https://pennanteducation.com/workshop-creative-writing/">Creative Writing</a><a href="https://pennanteducation.com/prompt-engineering-essentials-workshop-13/">Prompt Engineering (13+)</a></div>
+                </div>
+              </div>
+              <div class="mega-feature">
+                <img src="../img/yasin.jpg" alt="" loading="lazy">
+                <div class="in">
+                  <strong>Meet Yasin, Lead Computer Science teacher</strong>
+                  <span>Master's in Software Engineering. His students win coding contests in the US and UK.</span>
+                  <a href="#teachers">Meet our teachers →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Career -->
+      <div class="nav-item">
+        <button class="nav-trigger" aria-expanded="false" aria-controls="mega-career">Career training
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
+        <div class="mega" id="mega-career">
+          <div class="wrap" style="padding:0">
+            <div class="mega-grid" data-mega>
+              <div class="mega-side" role="tablist" aria-label="Career tracks">
+                <button role="tab" aria-selected="true" data-panel="c-cyber">Cybersecurity <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="c-net">Networking <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="c-rpa">UiPath automation and AI <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="c-prog">Programming <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="c-infra">Infrastructure and cloud <span aria-hidden="true">›</span></button>
+                <button role="tab" aria-selected="false" data-panel="c-data">Data and professional skills <span aria-hidden="true">›</span></button>
+              </div>
+              <div>
+                <div class="mega-panel active" id="c-cyber" role="tabpanel"><h4>Cybersecurity</h4><p>Start defending networks, then prove it with a certification.</p><div class="mega-links"><a href="https://pennanteducation.com/comptia-security/">CompTIA Security+</a><a href="https://pennanteducation.com/cisco-certified-support-technician-ccst-cybersecurity/">Cisco CCST Cybersecurity</a><a href="https://pennanteducation.com/cisco-certificate-in-ethical-hacking/">Cisco Ethical Hacking</a></div></div>
+                <div class="mega-panel" id="c-net" role="tabpanel"><h4>Networking</h4><p>From support technician to enterprise routing.</p><div class="mega-links"><a href="https://pennanteducation.com/certified-support-technician-ccst-networking/">CCST Networking</a><a href="https://pennanteducation.com/ccna-cisco-certified-network-associate/">CCNA</a><a href="https://pennanteducation.com/ccna-enterprise-networking-security-and-automation/">CCNA Enterprise Networking</a><a href="https://pennanteducation.com/cisco-certified-network-professional/">CCNP</a><a href="https://pennanteducation.com/ccnp-enterprise-advanced-routing-ccnp/">CCNP Advanced Routing</a></div></div>
+                <div class="mega-panel" id="c-rpa" role="tabpanel"><h4>UiPath automation and AI</h4><p>The full UiPath certification path, plus practical AI.</p><div class="mega-links"><a href="https://pennanteducation.com/uipath-automation-explorer/">Automation Explorer</a><a href="https://pennanteducation.com/uipath-rpa-citizen-developer-foundation/">Citizen Developer Foundation</a><a href="https://pennanteducation.com/uipath-certified-automation-developer-associate/">Automation Developer Associate</a><a href="https://pennanteducation.com/uipath-certified-automation-developer-professional/">Automation Developer Professional</a><a href="https://pennanteducation.com/uipath-certified-automation-business-analyst-associate/">Business Analyst</a><a href="https://pennanteducation.com/uipath-certified-specialized-ai-associate/">Specialized AI</a><a href="https://pennanteducation.com/uipath-certified-test-automation-engineer/">Test Automation Engineer</a><a href="https://pennanteducation.com/build-business-applications-using-openai/">Build apps with OpenAI</a></div></div>
+                <div class="mega-panel" id="c-prog" role="tabpanel"><h4>Programming</h4><p>Python Institute and C++ Institute certification paths.</p><div class="mega-links"><a href="https://pennanteducation.com/pcep-certified-entry-level-python-programmer/">Python PCEP</a><a href="https://pennanteducation.com/pcap-certified-associate-python-programmer/">Python PCAP</a><a href="https://pennanteducation.com/pcpp1-certified-professional-python-programmer-level-1/">Python PCPP1</a><a href="https://pennanteducation.com/jse-certified-entry-level-javascript-programmer/">JavaScript JSE</a><a href="https://pennanteducation.com/jsa-certified-associate-javascript-programmer/">JavaScript JSA</a><a href="https://pennanteducation.com/cpa-c-certified-associate-programmer/">C++ CPA</a><a href="https://pennanteducation.com/wde-certified-entry-level-web-developer/">Web Developer WDE</a></div></div>
+                <div class="mega-panel" id="c-infra" role="tabpanel"><h4>Infrastructure and cloud</h4><p>The CompTIA infrastructure pathway.</p><div class="mega-links"><a href="https://pennanteducation.com/comptia-a-it-essentials-8/">CompTIA A+</a><a href="https://pennanteducation.com/comptia-server/">CompTIA Server+</a><a href="https://pennanteducation.com/comptia-cloud/">CompTIA Cloud+</a><a href="https://pennanteducation.com/comptia-linux/">CompTIA Linux+</a></div></div>
+                <div class="mega-panel" id="c-data" role="tabpanel"><h4>Data and professional skills</h4><p>Data certifications, project management and workplace English.</p><div class="mega-links"><a href="https://pennanteducation.com/comptia-data/">CompTIA Data+</a><a href="https://pennanteducation.com/comptia-datasys/">CompTIA DataSys+</a><a href="https://pennanteducation.com/comptia-project/">CompTIA Project+</a><a href="https://pennanteducation.com/english-for-it-b1-gse-43-58/">English for IT B1</a><a href="https://pennanteducation.com/english-for-it-b2-gse-59-75/">English for IT B2</a></div></div>
+              </div>
+              <div class="mega-feature fund">
+                <span class="eyebrow" style="color:var(--cyan)">New Jersey</span>
+                <span class="big">Your training may be funded.</span>
+                <span style="color:#E2E4FF;font-size:15px">We work with New Jersey workforce and vocational rehabilitation programs.</span>
+                <a class="btn btn-sun" href="#career" style="align-self:flex-start;margin-top:10px">Check eligibility</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link" href="https://pennanteducation.com/pricing/">Pricing</a>
+      <a class="nav-link" href="https://pennanteducation.com/academic-partners/">Partners</a>
+      <a class="nav-link" href="#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="call-link" href="tel:+12407477755"><span>Questions? Call us</span><strong>(240) 747-7755</strong></a>
+      <a class="btn btn-blue" href="#book">Book a lesson</a>
+      <button class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="#1F1F5C" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop" data-close></div>
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer-head">
+      <img src="../img/logo-dark.png" alt="Pennant Education">
+      <button class="burger" style="display:inline-flex" aria-label="Close menu" data-close>
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#1F1F5C" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <button class="acc-btn" aria-expanded="true" aria-controls="d-k12">K–12 classes <span class="pm" aria-hidden="true">−</span></button>
+      <div class="acc-panel open" id="d-k12">
+        <div class="chip-row">
+          <a class="chip" href="https://pennanteducation.com/math/">Math</a><a class="chip" href="https://pennanteducation.com/english-language-arts-ela/">ELA</a><a class="chip" href="https://pennanteducation.com/science/">Science</a><a class="chip" href="https://pennanteducation.com/sat-prep-lessons/">SAT prep</a><a class="chip" href="https://pennanteducation.com/spanish-classes/">Spanish</a><a class="chip" href="https://pennanteducation.com/python/">Python</a><a class="chip" href="#">Minecraft</a><a class="chip" href="https://pennanteducation.com/digital-art/">Digital art</a><a class="chip" href="https://pennanteducation.com/chess/">Chess</a>
+        </div>
+        <p style="margin:14px 0 0"><a href="https://pennanteducation.com/k-12/" style="font-weight:700">All K–12 subjects →</a></p>
+      </div>
+      <button class="acc-btn" aria-expanded="false" aria-controls="d-career">Career training <span class="pm" aria-hidden="true">+</span></button>
+      <div class="acc-panel" id="d-career">
+        <div class="chip-row">
+          <a class="chip" href="https://pennanteducation.com/comptia-security/">Security+</a><a class="chip" href="https://pennanteducation.com/ccna-cisco-certified-network-associate/">CCNA</a><a class="chip" href="https://pennanteducation.com/comptia-a-it-essentials-8/">CompTIA A+</a><a class="chip" href="https://pennanteducation.com/uipath-automation-explorer/">UiPath</a><a class="chip" href="https://pennanteducation.com/pcep-certified-entry-level-python-programmer/">Python PCEP</a><a class="chip" href="https://pennanteducation.com/comptia-data/">Data+</a>
+        </div>
+        <p style="margin:14px 0 0"><a href="https://pennanteducation.com/career-track-home-page/" style="font-weight:700">All career tracks →</a></p>
+      </div>
+      <button class="acc-btn" aria-expanded="false" aria-controls="d-work">Workshops and camps <span class="pm" aria-hidden="true">+</span></button>
+      <div class="acc-panel" id="d-work">
+        <div class="chip-row"><a class="chip" href="https://pennanteducation.com/workshop-intro-to-ai/">Intro to AI</a><a class="chip" href="https://pennanteducation.com/workshop-cybersecurity-adv/">Cybersecurity</a><a class="chip" href="https://pennanteducation.com/workshop-creative-writing/">Creative writing</a></div>
+      </div>
+      <a class="drawer-link" href="https://pennanteducation.com/pricing/">Pricing</a>
+      <a class="drawer-link" href="https://pennanteducation.com/academic-partners/">Partners</a>
+      <a class="drawer-link" href="#faq" data-close>FAQ</a>
+    </div>
+    <div class="drawer-foot">
+      <a class="btn btn-blue" href="#book" data-close>Book a lesson</a>
+      <a class="btn btn-line" href="tel:+12407477755" aria-label="Call us" style="flex:0 0 56px;padding:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Live 1:1 online classes · Grades 1–12 and adults</span>
+      <h1>Every learner deserves a teacher who knows their <span class="mark">name.</span></h1>
+      <p class="lead">Private, live online lessons for students in Grades 1–12, and instructor-led certification training in IT, cybersecurity and automation for adults.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-blue" href="#book">Book a lesson</a>
+        <a class="btn btn-line" href="#pricing">See K–12 pricing</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof"><b>1:1</b><span>One teacher, one student</span></div>
+        <div class="proof"><b>$27.50</b><span>Per 30-minute lesson</span></div>
+        <div class="proof"><b>40+</b><span>Certification courses</span></div>
+      </div>
+    </div>
+
+    <div class="shape-stage">
+      <div class="shape-photo">
+        <!-- Replace src with a 12–20s muted loop of real classes. The poster shows until it loads. -->
+        <video id="heroVideo" autoplay muted loop playsinline preload="none"
+          poster="../img/math.jpg"
+          aria-label="Short muted clip of a live Pennant class">
+          <source src="" type="video/mp4">
+        </video>
+      </div>
+      <div class="shape-tri" aria-hidden="true"></div>
+      <div class="shape-dot" aria-hidden="true"></div>
+      <button class="video-toggle" id="videoToggle" aria-pressed="false">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" fill="#fff"/><rect x="7.4" y="1.5" width="2.6" height="9" fill="#fff"/></svg>
+        <span>Pause video</span>
+      </button>
+      <div class="hero-badge">
+        <b>Grades 1–12, every core subject</b>
+        <span>Math, ELA, science, SAT, languages, coding and art</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Two paths -->
+<section class="paths" aria-label="Choose your path">
+  <div class="path kids">
+    <div class="pic" aria-hidden="true"><img src="../img/teen.jpg" alt="" loading="lazy"></div>
+    <div class="txt">
+      <span class="eyebrow" style="color:var(--cyan)">For students · Grades 1–12</span>
+      <h2>K–12 classes</h2>
+      <p>One-on-one lessons tailored to your child's goals, level, learning style and pace.</p>
+      <ul><li>Math</li><li>ELA</li><li>Science</li><li>SAT</li><li>Spanish</li><li>Coding</li><li>Chess</li></ul>
+      <a class="go" href="https://pennanteducation.com/k-12/">Explore K–12 classes →</a>
+    </div>
+  </div>
+  <div class="path adults">
+    <div class="pic" aria-hidden="true"><img src="../img/male.jpg" alt="" loading="lazy"></div>
+    <div class="txt">
+      <span class="eyebrow" style="color:var(--cyan)">For adults and career changers</span>
+      <h2>Career training</h2>
+      <p>Instructor-led prep for industry certifications employers recognize.</p>
+      <ul><li>Security+</li><li>CCNA</li><li>CompTIA A+</li><li>UiPath</li><li>Python</li></ul>
+      <a class="go" href="#career">Explore career tracks →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Partners -->
+<section class="partners" aria-label="Curriculum partners">
+  <div class="wrap">
+    <small>Certification prep aligned with</small>
+    <span>Cisco Networking Academy</span><span>CompTIA</span><span>UiPath</span><span>OpenEDG Python Institute</span>
+  </div>
+</section>
+
+<!-- K-12 tabs -->
+<section class="section" id="k12">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">For families</span><h2>Classes built around one student at a time</h2></div>
+      <p>Every lesson is live and one-on-one, so the pace, examples and homework fit the student in front of the teacher.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="K–12 subjects" data-tabs>
+      <button class="tab" role="tab" aria-selected="true" aria-controls="t-core">Core subjects</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t-sat">SAT prep</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t-lang">Languages and chess</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t-code">Coding and tech</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t-art">Art and design</button>
+    </div>
+
+    <div class="tab-panel active" id="t-core" role="tabpanel">
+      <div class="tab-card">
+        <h3>Core school subjects</h3>
+        <p>Support tailored to each student's grade level, whether they're catching up or racing ahead.</p>
+        <ul><li>Mathematics</li><li>English Language Arts</li><li>Creative writing</li><li>Science</li><li>Social Studies</li></ul>
+        <a class="btn btn-blue" href="https://pennanteducation.com/math/">Explore core subjects</a>
+      </div>
+      <div class="tab-media"><img src="../img/math.jpg" alt="A young student working through a math problem" loading="lazy"><span class="tag">Math with Besara</span></div>
+    </div>
+
+    <div class="tab-panel" id="t-sat" role="tabpanel">
+      <div class="tab-card">
+        <h3>SAT preparation</h3>
+        <p>Personalized Math and Reading and Writing prep, focused on each student's strengths and areas for improvement.</p>
+        <ul><li>SAT Math</li><li>SAT Reading and Writing</li><li>Practice with real-format questions</li></ul>
+        <a class="btn btn-blue" href="https://pennanteducation.com/sat-prep-lessons/">Explore SAT prep</a>
+      </div>
+      <div class="tab-media"><img src="../img/teen.jpg" alt="A teenage student studying at home" loading="lazy"><span class="tag">High school</span></div>
+    </div>
+
+    <div class="tab-panel" id="t-lang" role="tabpanel">
+      <div class="tab-card">
+        <h3>Languages and chess</h3>
+        <p>Learn with native-speaking teachers, from beginner through advanced, including AP and IB Spanish.</p>
+        <ul><li>Spanish</li><li>French, Russian and Mandarin Chinese</li><li>English as a Second Language</li><li>Chess for strategic thinking</li></ul>
+        <a class="btn btn-blue" href="https://pennanteducation.com/foreign-language/">Explore languages</a>
+      </div>
+      <div class="tab-media"><img src="../img/chess.jpg" alt="A chess board mid-game" loading="lazy"><span class="tag">Chess</span></div>
+    </div>
+
+    <div class="tab-panel" id="t-code" role="tabpanel">
+      <div class="tab-card">
+        <h3>Coding and technology</h3>
+        <p>Real projects from day one: games, websites and apps your child can show off.</p>
+        <ul><li>Python</li><li>Minecraft coding</li><li>Unity game development</li><li>Full-stack web development</li><li>Prompt engineering</li></ul>
+        <a class="btn btn-blue" href="https://pennanteducation.com/python/">Explore coding</a>
+      </div>
+      <div class="tab-media"><img src="../img/yasin.jpg" alt="Yasin, Lead Computer Science teacher" loading="lazy" style="object-position:top"><span class="tag">Coding with Yasin</span></div>
+    </div>
+
+    <div class="tab-panel" id="t-art" role="tabpanel">
+      <div class="tab-card">
+        <h3>Art and design</h3>
+        <p>Build creative and practical skills through digital design and visual projects.</p>
+        <ul><li>Digital art and illustration</li><li>Graphic and web design</li><li>Photo and video editing</li></ul>
+        <a class="btn btn-blue" href="https://pennanteducation.com/digital-art/">Explore art and design</a>
+      </div>
+      <div class="tab-media"><img src="../img/cath.jpg" alt="Catherine, Digital Art teacher" loading="lazy" style="object-position:top"><span class="tag">Digital art with Catherine</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Teachers -->
+<section class="section teachers" id="teachers">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Our teachers</span><h2>Real people, real expertise</h2></div>
+      <a href="https://pennanteducation.com/k-12/" style="font-family:var(--head);font-weight:600">Meet all our teachers →</a>
+    </div>
+    <div class="t-grid">
+      <article class="teacher">
+        <div class="ph"><img src="../img/yasin.jpg" alt="Yasin" loading="lazy"></div>
+        <div class="in"><span class="role">Computer Science</span><h3>Yasin</h3><p>Lead teacher with a Master's in Software Engineering. Member of the Computer Science Teachers Association; his students compete and win in US and UK programming contests.</p></div>
+      </article>
+      <article class="teacher">
+        <div class="ph"><img src="../img/besara.jpg" alt="Besara" loading="lazy"></div>
+        <div class="in"><span class="role">Math</span><h3>Besara</h3><p>Experienced mathematics educator and university professor who builds strong understanding through clear, individual instruction.</p></div>
+      </article>
+      <article class="teacher">
+        <div class="ph"><img src="../img/cath.jpg" alt="Catherine" loading="lazy"></div>
+        <div class="in"><span class="role">Digital Art</span><h3>Catherine</h3><p>Artist and educator with a BS in Digital Design and Animation (summa cum laude). Teaches digital drawing, illustration and creative design.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">K–12 pricing</span><h2>Start with a 4-lesson plan</h2></div>
+      <p>One private lesson a week for four weeks. Choose the lesson length that works best for your child.</p>
+    </div>
+    <div class="price-grid">
+      <div class="plan">
+        <span class="len">30-minute lessons</span>
+        <span class="amt">$110</span>
+        <span class="per">$27.50 per lesson</span>
+        <span class="sub">4 lessons · once a week</span>
+        <a class="btn btn-line" href="#book">Choose 30 minutes</a>
+      </div>
+      <div class="plan pop">
+        <span class="flag">MOST FLEXIBLE</span>
+        <span class="len">45-minute lessons</span>
+        <span class="amt">$150</span>
+        <span class="per">$37.50 per lesson</span>
+        <span class="sub">4 lessons · once a week</span>
+        <a class="btn btn-blue" href="#book">Choose 45 minutes</a>
+      </div>
+      <div class="plan">
+        <span class="len">60-minute lessons</span>
+        <span class="amt">$200</span>
+        <span class="per">$50 per lesson</span>
+        <span class="sub">4 lessons · once a week</span>
+        <a class="btn btn-line" href="#book">Choose 60 minutes</a>
+      </div>
+    </div>
+    <p class="price-note">Need more than one lesson a week? Students can take lessons 2–5 times per week; frequency and schedule are customized for each student.</p>
+  </div>
+</section>
+
+<!-- Career -->
+<section class="section career" id="career">
+  <div class="wrap career-grid">
+    <div class="career-intro">
+      <span class="eyebrow">For adults and career changers</span>
+      <h2>Training for the certifications employers ask for</h2>
+      <p>Instructor-led prep for industry exams, from your first CompTIA A+ to CCNP and UiPath Professional.</p>
+      <div class="fund-card">
+        <b>New Jersey resident? Your training may be funded.</b>
+        <span>We work with New Jersey workforce and vocational rehabilitation programs. Ask us whether you qualify.</span>
+        <a class="btn btn-sun" href="#book">Check eligibility</a>
+      </div>
+    </div>
+
+    <div class="tracks" data-tracks>
+      <div class="track open">
+        <button class="track-btn" aria-expanded="true">
+          <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" fill="none" stroke="#5CF2FF" stroke-width="1.8"/></svg></span>
+          <span class="t">Cybersecurity <span class="n">3 courses</span></span><span class="pm" aria-hidden="true">−</span>
+        </button>
+        <div class="track-body"><div class="cert-list"><a class="cert" href="https://pennanteducation.com/comptia-security/">CompTIA Security+</a><a class="cert" href="https://pennanteducation.com/cisco-certified-support-technician-ccst-cybersecurity/">Cisco CCST Cybersecurity</a><a class="cert" href="https://pennanteducation.com/cisco-certificate-in-ethical-hacking/">Cisco Ethical Hacking</a></div></div>
+      </div>
+      <div class="track">
+        <button class="track-btn" aria-expanded="false">
+          <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2" fill="none" stroke="#5CF2FF" stroke-width="1.8"/><circle cx="5" cy="18" r="2.2" fill="none" stroke="#5CF2FF" stroke-width="1.8"/><circle cx="19" cy="18" r="2.2" fill="none" stroke="#5CF2FF" stroke-width="1.8"/><path d="M11 7l-5 9M13 7l5 9M7.2 18h9.6" stroke="#5CF2FF" stroke-width="1.8"/></svg></span>
+          <span class="t">Networking <span class="n">6 courses</span></span><span class="pm" aria-hidden="true">+</span>
+        </button>
+        <div class="track-body"><div class="cert-list"><a class="cert" href="https://pennanteducation.com/certified-support-technician-ccst-networking/">CCST Networking</a><a class="cert" href="https://pennanteducation.com/ccna-cisco-certified-network-associate/">CCNA</a><a class="cert" href="https://pennanteducation.com/ccna-enterprise-networking-security-and-automation/">CCNA Enterprise</a><a class="cert" href="https://pennanteducation.com/cisco-certified-network-professional/">CCNP</a><a class="cert" href="https://pennanteducation.com/ccnp-enterprise-advanced-routing-ccnp/">CCNP Advanced Routing</a></div></div>
+      </div>
+      <div class="track">
+        <button class="track-btn" aria-expanded="false">
+          <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="12" rx="3" fill="none" stroke="#5CF2FF" stroke-width="1.8"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6" stroke="#5CF2FF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="t">UiPath automation and AI <span class="n">13 courses</span></span><span class="pm" aria-hidden="true">+</span>
+        </button>
+        <div class="track-body"><div class="cert-list"><a class="cert" href="https://pennanteducation.com/uipath-automation-explorer/">Automation Explorer</a><a class="cert" href="https://pennanteducation.com/uipath-certified-automation-developer-associate/">Developer Associate</a><a class="cert" href="https://pennanteducation.com/uipath-certified-automation-developer-professional/">Developer Professional</a><a class="cert" href="https://pennanteducation.com/uipath-certified-automation-business-analyst-associate/">Business Analyst</a><a class="cert" href="https://pennanteducation.com/uipath-certified-specialized-ai-associate/">Specialized AI</a><a class="cert" href="https://pennanteducation.com/uipath-certified-test-automation-engineer/">Test Automation</a><a class="cert" href="https://pennanteducation.com/build-business-applications-using-openai/">Apps with OpenAI</a></div></div>
+      </div>
+      <div class="track">
+        <button class="track-btn" aria-expanded="false">
+          <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="#5CF2FF" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="t">Programming <span class="n">10 courses</span></span><span class="pm" aria-hidden="true">+</span>
+        </button>
+        <div class="track-body"><div class="cert-list"><a class="cert" href="https://pennanteducation.com/pcep-certified-entry-level-python-programmer/">Python PCEP</a><a class="cert" href="https://pennanteducation.com/pcap-certified-associate-python-programmer/">Python PCAP</a><a class="cert" href="https://pennanteducation.com/pcpp1-certified-professional-python-programmer-level-1/">Python PCPP1</a><a class="cert" href="https://pennanteducation.com/jse-certified-entry-level-javascript-programmer/">JavaScript JSE</a><a class="cert" href="https://pennanteducation.com/jsa-certified-associate-javascript-programmer/">JavaScript JSA</a><a class="cert" href="https://pennanteducation.com/cpe-c-certified-entry-level-programmer/">C++ CPE</a><a class="cert" href="https://pennanteducation.com/cpa-c-certified-associate-programmer/">C++ CPA</a><a class="cert" href="https://pennanteducation.com/cpp-c-certified-professional-programmer/">C++ CPP</a><a class="cert" href="https://pennanteducation.com/wde-certified-entry-level-web-developer/">Web WDE</a><a class="cert" href="https://pennanteducation.com/wda-certified-associate-web-developer/">Web WDA</a></div></div>
+      </div>
+      <div class="track">
+        <button class="track-btn" aria-expanded="false">
+          <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="2" fill="none" stroke="#5CF2FF" stroke-width="1.8"/><rect x="4" y="14" width="16" height="6" rx="2" fill="none" stroke="#5CF2FF" stroke-width="1.8"/><path d="M8 7h.01M8 17h.01" stroke="#5CF2FF" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <span class="t">Infrastructure and cloud <span class="n">4 courses</span></span><span class="pm" aria-hidden="true">+</span>
+        </button>
+        <div class="track-body"><div class="cert-list"><a class="cert" href="https://pennanteducation.com/comptia-a-it-essentials-8/">CompTIA A+</a><a class="cert" href="https://pennanteducation.com/comptia-server/">Server+</a><a class="cert" href="https://pennanteducation.com/comptia-cloud/">Cloud+</a><a class="cert" href="https://pennanteducation.com/comptia-linux/">Linux+</a></div></div>
+      </div>
+      <div class="track">
+        <button class="track-btn" aria-expanded="false">
+          <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6" stroke="#5CF2FF" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="t">Data and professional skills <span class="n">5 courses</span></span><span class="pm" aria-hidden="true">+</span>
+        </button>
+        <div class="track-body"><div class="cert-list"><a class="cert" href="https://pennanteducation.com/comptia-data/">CompTIA Data+</a><a class="cert" href="https://pennanteducation.com/comptia-datasys/">DataSys+</a><a class="cert" href="https://pennanteducation.com/comptia-project/">Project+</a><a class="cert" href="https://pennanteducation.com/english-for-it-b1-gse-43-58/">English for IT B1</a><a class="cert" href="https://pennanteducation.com/english-for-it-b2-gse-59-75/">English for IT B2</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Review -->
+<section class="section review">
+  <div class="wrap review-wrap">
+    <div class="quote-mark" aria-hidden="true"></div>
+    <figure style="margin:0">
+      <div class="stars" aria-label="Five-star Google review">★★★★★</div>
+      <blockquote>“We have been with Pennant Education for almost a year now, and I truly cannot thank them enough for everything they have done for my son.”</blockquote>
+      <figcaption class="who"><b>Daimy M.</b> · Parent · Google review · Coding and Spanish</figcaption>
+      <p style="margin:18px 0 0"><a href="https://pennanteducation.com/pricing/" style="font-family:var(--head);font-weight:600">Read more parent reviews →</a></p>
+    </figure>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow">Questions</span>
+      <h2 style="font-size:clamp(30px,3.6vw,48px);margin-top:12px">Good to know</h2>
+      <p style="color:var(--muted);margin:16px 0 24px">Can't find your answer? Call <a href="tel:+12407477755">(240) 747-7755</a> or message us on <a href="https://wa.me/16099292070">WhatsApp</a>.</p>
+    </div>
+    <div class="faq-list">
+      <details open><summary>How do online lessons work?</summary><p>Every lesson is live and one-on-one with an experienced teacher, from home. Lessons are adapted to the student's level, goals and pace.</p></details>
+      <details><summary>How long is each lesson, and how often?</summary><p>Choose 30, 45 or 60-minute lessons. Most families start with one lesson a week; students can take 2–5 lessons a week.</p></details>
+      <details><summary>How much does it cost?</summary><p>The standard 4-lesson plan is $110 for 30-minute lessons, $150 for 45 minutes and $200 for 60 minutes.</p></details>
+      <details><summary>Do you support neurodiverse learners?</summary><p>Yes. Because every lesson is one-on-one, teachers adjust the pace and approach to how each student learns best.</p></details>
+      <details><summary>Can my career training be funded?</summary><p>If you live in New Jersey, workforce and vocational rehabilitation programs may cover your training. Contact us and we'll help you check.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="book">
+  <div class="wrap">
+    <div>
+      <h2>Ready to meet your teacher?</h2>
+      <p>Tell us who's learning and what you'd like to achieve. Our Cranbury, New Jersey team will match you with the right teacher.</p>
+    </div>
+    <div class="acts">
+      <a class="btn btn-sun" href="https://pennanteducation.com/pricing/">Book a lesson</a>
+      <a class="btn btn-ghost-light" href="https://wa.me/16099292070">Message on WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <img src="../img/logo-light.png" alt="Pennant Education">
+      <p style="margin:0 0 16px;max-width:300px">Live, one-on-one online learning for students in Grades 1–12 and working adults.</p>
+      <p style="margin:0"><a href="mailto:info@pennanteducation.com">info@pennanteducation.com</a></p>
+    </div>
+    <div><h4>K–12</h4><ul><li><a href="https://pennanteducation.com/math/">Math</a></li><li><a href="https://pennanteducation.com/english-language-arts-ela/">ELA</a></li><li><a href="https://pennanteducation.com/sat-prep-lessons/">SAT prep</a></li><li><a href="https://pennanteducation.com/foreign-language/">Languages</a></li><li><a href="https://pennanteducation.com/python/">Coding</a></li><li><a href="https://pennanteducation.com/pricing/">Pricing</a></li></ul></div>
+    <div><h4>Career</h4><ul><li><a href="https://pennanteducation.com/comptia-security/">Cybersecurity</a></li><li><a href="https://pennanteducation.com/ccna-cisco-certified-network-associate/">Networking</a></li><li><a href="https://pennanteducation.com/uipath-automation-explorer/">UiPath and AI</a></li><li><a href="https://pennanteducation.com/pcep-certified-entry-level-python-programmer/">Programming</a></li><li><a href="https://pennanteducation.com/academic-partners/">Partners</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#teachers">Our teachers</a></li><li><a href="#faq">FAQ</a></li><li><a href="https://pennanteducation.com/class-content-policy/">Class content policy</a></li><li><a href="https://pennanteducation.com/safety-privacy-policy/">Safety and privacy</a></li></ul></div>
+    <div><h4>Offices</h4><ul><li><b style="color:#fff">Main office</b><br>Cranbury, New Jersey<br><a href="tel:+12407477755">+1 (240) 747-7755</a></li><li><b style="color:#fff">Gulf office</b><br>Jeddah, Saudi Arabia</li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Pennant Education. All rights reserved.</span>
+    <nav aria-label="Legal"><a href="https://pennanteducation.com/terms-of-service/">Terms of service</a><a href="https://pennanteducation.com/privacy-policy/">Privacy policy</a><a href="#">Cookie policy</a></nav>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="btn btn-blue" href="#book">Book a lesson</a>
+  <a class="btn btn-line icon-btn" href="https://wa.me/16099292070" aria-label="WhatsApp us">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-3.9-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<script>
+(() => {
+  // Desktop mega menus: click to open, Escape or outside click to close
+  const items = [...document.querySelectorAll('.nav-item')];
+  const closeAll = (except) => items.forEach(i => { if (i !== except) { i.classList.remove('open'); i.querySelector('.nav-trigger').setAttribute('aria-expanded','false'); } });
+  items.forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = !item.classList.contains('open');
+      closeAll(item);
+      item.classList.toggle('open', open);
+      trigger.setAttribute('aria-expanded', String(open));
+    });
+    item.querySelector('.mega').addEventListener('click', e => e.stopPropagation());
+  });
+  document.addEventListener('click', () => closeAll());
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAll(); closeDrawer(); } });
+
+  // Category switching inside each mega menu (hover or focus)
+  document.querySelectorAll('[data-mega]').forEach(mega => {
+    const btns = mega.querySelectorAll('.mega-side button');
+    const show = btn => {
+      btns.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+      mega.querySelectorAll('.mega-panel').forEach(p => p.classList.toggle('active', p.id === btn.dataset.panel));
+    };
+    btns.forEach(b => { b.addEventListener('mouseenter', () => show(b)); b.addEventListener('focus', () => show(b)); b.addEventListener('click', () => show(b)); });
+  });
+
+  // Mobile drawer
+  const drawer = document.getElementById('drawer');
+  const burger = document.querySelector('.header-actions .burger');
+  function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; drawer.querySelector('[data-close]').focus(); }
+  function closeDrawer(){ if(!drawer.classList.contains('open')) return; drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; burger.focus(); }
+  burger.addEventListener('click', openDrawer);
+  drawer.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeDrawer));
+  drawer.querySelectorAll('.acc-btn').forEach(btn => btn.addEventListener('click', () => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    panel.classList.toggle('open', open);
+    btn.querySelector('.pm').textContent = open ? '−' : '+';
+  }));
+
+  // K-12 tabs
+  document.querySelectorAll('[data-tabs]').forEach(list => {
+    const tabs = [...list.querySelectorAll('[role="tab"]')];
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          const next = tabs[(idx + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+          next.focus(); select(next);
+        }
+      });
+    });
+    function select(tab){
+      tabs.forEach(t => { t.setAttribute('aria-selected', String(t === tab)); document.getElementById(t.getAttribute('aria-controls')).classList.toggle('active', t === tab); });
+    }
+  });
+
+  // Career accordion
+  document.querySelectorAll('[data-tracks] .track').forEach(track => {
+    const btn = track.querySelector('.track-btn');
+    btn.addEventListener('click', () => {
+      const open = !track.classList.contains('open');
+      track.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      track.querySelector('.pm').textContent = open ? '−' : '+';
+    });
+  });
+
+  // Hero video pause / play (also respects reduced-motion)
+  const video = document.getElementById('heroVideo');
+  const vbtn = document.getElementById('videoToggle');
+  const label = vbtn.querySelector('span');
+  const setPaused = paused => { paused ? video.pause() : video.play().catch(()=>{}); vbtn.setAttribute('aria-pressed', String(paused)); label.textContent = paused ? 'Play video' : 'Pause video'; };
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) setPaused(true);
+  vbtn.addEventListener('click', () => setPaused(!video.paused));
+})();
+</script>
+</body>
+</html>
